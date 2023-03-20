@@ -18,7 +18,7 @@ The application contains:
 API testing was done using Postman. 
 
 
-![Postman screenshot](./static/Postman-screenshot.png)
+![Postman screenshot](src/main/resources/static/Postman-screenshot.png)
 
 
 ## Technologies 
