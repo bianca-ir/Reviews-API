@@ -13,8 +13,9 @@ Created with Spring Boot and PostgreSQL.
 ## General info 
 
 The application contains: 
-* 3 <b>DAO</b> classes (User, Online Course, Review) 
+* 3 entities (User, Online Course, Review) 
 * <b>GET</b>, <b>POST</b>, <b>PUT</b>, <b>DELETE</b> requests for each of the classes 
+
 API testing was done using Postman. 
 
 
@@ -33,8 +34,9 @@ Project is created with:
 
 
 ## Resources 
-1. [Building REST services with Spring](https://spring.io/guides/tutorials/rest/) 
-2. [Spring @GetMapping, @PostMapping, @PutMapping, @DeleteMapping and @PatchMapping](https://www.javaguides.net/2018/11/spring-getmapping-postmapping-putmapping-deletemapping-patchmapping.html)
-3. [Accessing Relational Data using JDBC with Spring](https://spring.io/guides/gs/relational-data-access/)
+1. [Spring in Action - Craig Walls, 5th Edition](https://www.manning.com/books/spring-in-action-fifth-edition) 
+2. [Building REST services with Spring](https://spring.io/guides/tutorials/rest/) 
+3. [Spring @GetMapping, @PostMapping, @PutMapping, @DeleteMapping and @PatchMapping](https://www.javaguides.net/2018/11/spring-getmapping-postmapping-putmapping-deletemapping-patchmapping.html)
+4. [Accessing Relational Data using JDBC with Spring](https://spring.io/guides/gs/relational-data-access/)
 
 
