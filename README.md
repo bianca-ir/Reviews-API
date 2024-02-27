@@ -30,7 +30,7 @@ Project is created with:
 
 ## Future improvement 
 * Implement secure authentication using Spring Security 
-* Implement unit tests using Mockito 
+
 
 
 ## Resources 
