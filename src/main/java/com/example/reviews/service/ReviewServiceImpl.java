@@ -25,14 +25,22 @@ public class ReviewServiceImpl implements  ReviewService{
     }
 
     @Override
+    public Review getReviewByCourseId(Integer courseId) throws ReviewsResourceNotFoundException {
+        return reviewRepository.findByCourseId(courseId);
+    }
+
+
+
+    @Override
     public Review addReview(Integer userId, Integer courseId, String description) throws ReviewsResourceNotFoundException {
         int reviewId = reviewRepository.create(userId, courseId, description);
         return reviewRepository.findById(userId, courseId, reviewId);
     }
 
     @Override
-    public void updateReview(Integer userId, Integer courseId, Integer reviewId, Review review) throws ReviewsBadRequestException {
-        reviewRepository.update(userId, reviewId, courseId, review);
+    public Review updateReview(Integer userId, Integer courseId, Integer reviewId, String description) throws ReviewsBadRequestException {
+        reviewRepository.update(userId, reviewId, courseId, description);
+        return reviewRepository.findById(userId, courseId, reviewId);
     }
 
     @Override

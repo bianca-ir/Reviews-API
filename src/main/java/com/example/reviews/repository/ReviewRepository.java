@@ -11,10 +11,12 @@ public interface ReviewRepository {
 
     Review findById(Integer userId, Integer courseId, Integer reviewId) throws ReviewsResourceNotFoundException;
 
+    Review findByCourseId(Integer courseId) throws ReviewsResourceNotFoundException;
+
 
     Integer create(Integer userId, Integer courseId, String description) throws ReviewsBadRequestException;
 
-    void update(Integer userId, Integer reviewId, Integer courseId, Review review) throws ReviewsBadRequestException;
+    Review update(Integer userId, Integer reviewId, Integer courseId, String description) throws ReviewsBadRequestException;
 
     void removeById(Integer userId, Integer reviewId, Integer courseId) throws ReviewsResourceNotFoundException;
 }

@@ -12,9 +12,11 @@ public interface ReviewService {
 
     Review getReviewById(Integer userId, Integer courseId, Integer reviewId) throws ReviewsResourceNotFoundException;
 
+    Review getReviewByCourseId(Integer courseId) throws ReviewsResourceNotFoundException;
+
     Review addReview(Integer userId, Integer courseId, String description) throws ReviewsResourceNotFoundException;
 
-    void updateReview(Integer userId, Integer courseId, Integer reviewId, Review review) throws ReviewsBadRequestException;
+    Review updateReview(Integer userId, Integer courseId, Integer reviewId, String description) throws ReviewsBadRequestException;
 
     void removeReview(Integer userId, Integer courseId, Integer reviewId) throws ReviewsResourceNotFoundException;
 

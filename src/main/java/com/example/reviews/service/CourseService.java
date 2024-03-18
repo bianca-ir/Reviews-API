@@ -17,4 +17,5 @@ public interface CourseService {
     void removeCourse(Integer courseId) throws ReviewsResourceNotFoundException;
 
 
+    Integer getIdByName(String courseName);
 }

@@ -26,9 +26,9 @@ public class ReviewRepositoryImpl implements ReviewRepository {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    private static final String SQL_CREATE = "INSERT INTO REVIEWS(REVIEW_ID, USER_ID, DESCRIPTION, COURSE_ID) VALUES (DEFAULT, ?, ?, ?)";
+    private static final String SQL_CREATE = "INSERT INTO REVIEWS(REVIEW_ID, USER_ID, COURSE_ID, DESCRIPTION) VALUES (DEFAULT, ?, ?, ?)";
     private static final String SQL_FIND_BY_ID = "SELECT REVIEW_ID, USER_ID, DESCRIPTION_ID, COURSE_ID FROM REVIEWS WHERE USER_ID = ? AND COURSE_ID = ? AND REVIEW_ID = ?";
-    private static final String SQL_FIND_BY_USER = "SELECT * WHERE USER_ID = ?";
+    private static final String SQL_FIND_BY_COURSE = "SELECT * FROM REVIEWS WHERE COURSE_ID = ?";
     private static final String SQL_UPDATE = "UPDATE REVIEWS SET DESCRIPTION = ? WHERE USER_ID = ? AND COURSE_ID = ? AND REVIEW_ID = ?";
     private static final String SQL_DELETE = "DELETE FROM REVIEWS WHERE USER_ID = ? AND COURSE_ID = ? AND REVIEW_ID = ? ";
     private static final String SQL_FIND_ALL = "SELECT REVIEW_ID, USER_ID, DESCRIPTION_ID, COURSE_ID FROM REVIEWS WHERE USER_ID = ? AND COURSE_ID = ? ";
@@ -43,6 +43,15 @@ public class ReviewRepositoryImpl implements ReviewRepository {
             return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new Object[]{userId, courseId, reviewId}, reviewRowMapper);
         } catch (Exception e) {
             throw new ReviewsResourceNotFoundException("Could not find review.");
+        }
+    }
+
+    @Override
+    public Review findByCourseId(Integer courseId) throws ReviewsResourceNotFoundException {
+        try {
+            return jdbcTemplate.queryForObject(SQL_FIND_BY_COURSE, new Object[]{courseId}, reviewRowMapper);
+        } catch (Exception e) {
+            throw new ReviewsResourceNotFoundException("Could not find review by course.");
         }
     }
 
@@ -67,9 +76,9 @@ public class ReviewRepositoryImpl implements ReviewRepository {
     }
 
     @Override
-    public void update(Integer userId, Integer reviewId, Integer courseId, Review review) throws ReviewsBadRequestException {
+    public Review update(Integer userId, Integer reviewId, Integer courseId, String description) throws ReviewsBadRequestException {
         try {
-            jdbcTemplate.update(SQL_UPDATE, new Object[]{review.getDescription(), userId, courseId, reviewId});
+            return jdbcTemplate.queryForObject(SQL_UPDATE, new Object[]{description, courseId, userId, reviewId}, reviewRowMapper);
         }catch (Exception e) {
             throw new ReviewsBadRequestException("Could not update course");
         }

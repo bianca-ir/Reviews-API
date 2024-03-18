@@ -33,8 +33,9 @@ public class UserRepositoryImpl implements UserRepository {
             "FROM USERS WHERE USER_ID = ?";
     private static final String SQL_FIND_BY_EMAIL = "SELECT USER_ID, FIRST_NAME, EMAIL, PASSWORD " +
             "FROM USERS WHERE EMAIL = ?";
-    private static final String SQL_FIND_BY_NAME = "SELECT USER_ID" +
+    private static final String SQL_FIND_BY_NAME = "SELECT USER_ID " +
             "FROM USERS WHERE FIRST_NAME = ?";
+
 
 
     @Override
@@ -79,4 +80,8 @@ public class UserRepositoryImpl implements UserRepository {
     });
 
 
+    @Override
+    public Integer getIdByName(String firstName) {
+        return jdbcTemplate.queryForObject(SQL_FIND_BY_NAME, Integer.class, firstName);
+    }
 }

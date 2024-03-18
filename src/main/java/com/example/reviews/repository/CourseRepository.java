@@ -13,4 +13,6 @@ public interface CourseRepository {
     void update(Integer courseId, Course course) throws ReviewsBadRequestException;
 
     void removeById(Integer courseId);
+
+    Integer getIdByName(String courseName);
 }

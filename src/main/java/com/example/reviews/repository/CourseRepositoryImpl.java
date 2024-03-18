@@ -30,6 +30,8 @@ public class CourseRepositoryImpl implements CourseRepository {
             "FROM COURSES WHERE COURSE_ID = ?";
     private static final String SQL_UPDATE = "UPDATE COURSES SET URL = ? WHERE COURSE_ID = ?";
     private static final String SQL_DELETE_COURSE = "DELETE FROM COURSES WHERE COURSE_ID = ?";
+    private static final String SQL_FIND_BY_NAME = "SELECT COURSE_ID " +
+            "FROM COURSES WHERE TITLE = ?";
 
     @Override
     public Course findById(Integer courseId) throws ReviewsResourceNotFoundException {
@@ -79,4 +81,9 @@ public class CourseRepositoryImpl implements CourseRepository {
                 rs.getString("PROVIDER"),
                 rs.getString("SUBJECT"));
     });
+
+    @Override
+    public Integer getIdByName(String courseName) {
+        return jdbcTemplate.queryForObject(SQL_FIND_BY_NAME, Integer.class, courseName);
+    }
 }

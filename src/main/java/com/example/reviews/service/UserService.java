@@ -8,4 +8,6 @@ public interface UserService {
 
     User registerUser(String firstName, String email, String password) throws ReviewsAuthException;
 
+    Integer getIdByName(String firstName);
+
 }

@@ -29,5 +29,10 @@ public class UserServiceImpl implements UserService {
         Integer userId = userRepository.create(firstName, email, password);
         return userRepository.findById(userId);
     }
+
+    @Override
+    public Integer getIdByName(String firstName) {
+        return userRepository.getIdByName(firstName);
+    }
 }
 

@@ -11,5 +11,7 @@ public interface UserRepository {
 
     User findById(Integer userId);
 
+    Integer getIdByName(String firstName);
+
 
 }

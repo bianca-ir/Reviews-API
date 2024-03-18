@@ -36,5 +36,10 @@ public class CourseServiceImpl implements CourseService {
         courseRepository.removeById(courseId);
     }
 
+    @Override
+    public Integer getIdByName(String courseName) {
+        return courseRepository.getIdByName(courseName);
+    }
+
 
 }
