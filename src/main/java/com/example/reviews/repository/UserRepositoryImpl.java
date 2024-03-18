@@ -33,6 +33,9 @@ public class UserRepositoryImpl implements UserRepository {
             "FROM USERS WHERE USER_ID = ?";
     private static final String SQL_FIND_BY_EMAIL = "SELECT USER_ID, FIRST_NAME, EMAIL, PASSWORD " +
             "FROM USERS WHERE EMAIL = ?";
+    private static final String SQL_FIND_BY_NAME = "SELECT USER_ID" +
+            "FROM USERS WHERE FIRST_NAME = ?";
+
 
     @Override
     public Integer create(String firstName, String email, String password) {
@@ -74,4 +77,6 @@ public class UserRepositoryImpl implements UserRepository {
                 rs.getString("EMAIL"),
                 rs.getString("PASSWORD"));
     });
+
+
 }

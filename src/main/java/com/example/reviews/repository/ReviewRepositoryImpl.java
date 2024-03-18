@@ -28,6 +28,7 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 
     private static final String SQL_CREATE = "INSERT INTO REVIEWS(REVIEW_ID, USER_ID, DESCRIPTION, COURSE_ID) VALUES (DEFAULT, ?, ?, ?)";
     private static final String SQL_FIND_BY_ID = "SELECT REVIEW_ID, USER_ID, DESCRIPTION_ID, COURSE_ID FROM REVIEWS WHERE USER_ID = ? AND COURSE_ID = ? AND REVIEW_ID = ?";
+    private static final String SQL_FIND_BY_USER = "SELECT * WHERE USER_ID = ?";
     private static final String SQL_UPDATE = "UPDATE REVIEWS SET DESCRIPTION = ? WHERE USER_ID = ? AND COURSE_ID = ? AND REVIEW_ID = ?";
     private static final String SQL_DELETE = "DELETE FROM REVIEWS WHERE USER_ID = ? AND COURSE_ID = ? AND REVIEW_ID = ? ";
     private static final String SQL_FIND_ALL = "SELECT REVIEW_ID, USER_ID, DESCRIPTION_ID, COURSE_ID FROM REVIEWS WHERE USER_ID = ? AND COURSE_ID = ? ";
@@ -44,6 +45,7 @@ public class ReviewRepositoryImpl implements ReviewRepository {
             throw new ReviewsResourceNotFoundException("Could not find review.");
         }
     }
+
 
     @Override
     public Integer create(Integer userId, Integer courseId, String description) throws ReviewsBadRequestException {

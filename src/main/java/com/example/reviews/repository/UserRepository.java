@@ -10,4 +10,6 @@ public interface UserRepository {
     User findByEmailAndPassword(String email, String password) throws ReviewsAuthException;
 
     User findById(Integer userId);
+
+
 }
