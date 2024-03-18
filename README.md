@@ -29,6 +29,7 @@ Project is created with:
 * PostgreSQL version: 1.4.37 
 
 ## Future improvement 
+* Use Hibernate instead of JDBC 
 * Implement secure authentication using Spring Security 
 
 
